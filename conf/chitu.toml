@@ -1,0 +1,51 @@
+
+[app]
+
+name = "ChiTu"
+int_tags = []
+interval = 5
+# unit: minute eg: if you specified 1, then after 5 minutes the redis don't have data,
+# then the node is juged as dead.
+dead_threshold = 1
+# which node are you monitoring ?
+node_name = 'test_node'
+[logging]
+# boolean type, if true ,the debug information will print sys.stdout.
+# if false, the debug information will print to file we specified.
+debug = true
+# the derectory in which our log file reside.
+logfile = "logs/winwin.log"
+# backup log_fie maximum number is 5.
+backup_count = 5
+# A log files maximum size.if size exceed this, bakcup it.
+max_size = 1048576
+# format your debug information.
+# for more infomation, please checkout this site:
+#       http://logbook.readthedocs.io/en/stable/
+format_string = '({record.time:%Y-%m-%d %H:%M:%S.%f%z}) {record.level_name},{record.channel}[{record.lineno}]: {record.message}'
+
+[redis]
+    [[redis.address]]
+    # local ip or remote ip ?
+    host = "127.0.0.1"
+    # which port is your redis server host?
+    port = 6379
+    # which db your data reside in ?
+    db = 1
+
+[influxdb]
+host = "10.203.96.26"
+port = 8086
+username ="eimuserw"
+password = "max2016s0luto9"
+db = "patac_eim"
+
+# s: second
+time_precision = "u"
+
+[Deamon]
+deamon = true
+cmd = 'schtasks /run /I /tn ziyan\ziyan'
+process_name = "ziyan.exe"
+
+
